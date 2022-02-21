@@ -1,7 +1,6 @@
 package net.uyora.harvester.holograms;
 
 import dev.geco.gholo.api.GHoloAPI;
-import dev.geco.gholo.objects.Holo;
 import net.uyora.harvester.Main;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -15,7 +14,6 @@ public class HoloHandler {
     private final Main main;
     private final GHoloAPI api;
     private final String hologramName;
-    private Location holoLocation;
 
     public HoloHandler(Main main){
         this.main = main;
@@ -32,18 +30,13 @@ public class HoloHandler {
     }
 
     public void createHologram(Location location, Player player){
-        List<String> holoContent = new ArrayList<String>();
-        holoLocation = location;
+        List<String> holoContent = new ArrayList<>();
         String material = main.getConfigManager().getDataConfig().getString("Settings.harvest_hologram.icon.item");
         String modelData = String.valueOf(main.getConfigManager().getDataConfig().getInt("Settings.harvest_hologram.icon.custom_model_data"));
         holoContent.add("ICON:" + material + " {CustomModelData:" + modelData +"}");
-        api.insertHolo(hologramName, holoLocation, holoContent);
+        api.insertHolo(hologramName, location, holoContent);
         api.setHoloCondition(hologramName, "%player%=" + player);
-        main.getHoloManager().addHolo(holoLocation, hologramName);
-    }
-
-    public Holo getHolo(Location location){
-        return api.getHolo(main.getHoloManager().getHologram(location));
+        main.getHoloManager().addHolo(location, hologramName);
     }
 
     public void removeHologram(){

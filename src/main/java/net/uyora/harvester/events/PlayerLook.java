@@ -32,12 +32,16 @@ public class PlayerLook implements Listener {
         if (block.getBlockData() instanceof Ageable) {
             Ageable ageable = (Ageable) block.getBlockData();
             if (ageable.getAge() == ageable.getMaximumAge()) {
-                if (!main.getHoloManager().holoExists(holoLoc)) {
-                    holoHandler.createHologram(holoLoc, player);
-                    Bukkit.getScheduler().scheduleSyncDelayedTask(main, () -> {
-                        holoHandler.removeHologram();
-                        main.getHoloManager().removeHolo(holoLoc);
-                    }, duration);
+                if (main.getConfigManager().getDataConfig().getBoolean("Settings.harvest_hologram.enabled")) {
+                    if (fileManager.getPlayerConfig().getBoolean("harvest_hologram")) {
+                        if (!main.getHoloManager().holoExists(holoLoc)) {
+                            holoHandler.createHologram(holoLoc, player);
+                            Bukkit.getScheduler().scheduleSyncDelayedTask(main, () -> {
+                                holoHandler.removeHologram();
+                                main.getHoloManager().removeHolo(holoLoc);
+                            }, duration);
+                        }
+                    }
                 }
             }
         }

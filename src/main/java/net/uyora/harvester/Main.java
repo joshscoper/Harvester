@@ -9,6 +9,8 @@ import net.uyora.harvester.holograms.HoloManager;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.Objects;
+
 public final class Main extends JavaPlugin {
 
     private ConfigManager configManager;
@@ -30,7 +32,7 @@ public final class Main extends JavaPlugin {
 
     public void initializeClasses(){
         configManager = new ConfigManager(this);
-        holoManager = new HoloManager(this);
+        holoManager = new HoloManager();
     }
 
     public void registerEvents(){
@@ -40,7 +42,7 @@ public final class Main extends JavaPlugin {
     }
 
     public Boolean hologramEnabled(){
-        if (Bukkit.getServer().getPluginManager().getPlugin("GHolo").isEnabled()){
+        if (Objects.requireNonNull(Bukkit.getServer().getPluginManager().getPlugin("GHolo")).isEnabled()){
             return true;
         } else {
             return false;

@@ -1,6 +1,5 @@
 package net.uyora.harvester.holograms;
 
-import net.uyora.harvester.Main;
 import org.bukkit.Location;
 
 import java.util.HashMap;
@@ -9,19 +8,14 @@ import java.util.Map;
 
 public class HoloManager {
 
-    private final Main main;
     private final Map<Location, String> holoMap;
 
-    public HoloManager(Main main){
-        this.main = main;
-        holoMap = new HashMap<Location,String>();
+    public HoloManager(){
+        holoMap = new HashMap<>();
     }
 
     public Boolean holoExists(Location location){
-        if (holoMap.containsKey(location)){
-            return true;
-        }
-        return false;
+        return holoMap.containsKey(location);
     }
 
     public void addHolo(Location location, String uuid){
@@ -34,10 +28,6 @@ public class HoloManager {
 
     public void clearHoloMap(){
         holoMap.clear();
-    }
-
-    public String getHologram(Location location){
-        return holoMap.get(location);
     }
 
     public Map<Location, String> getHoloMap(){return holoMap;}

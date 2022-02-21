@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class PlayerFileManager {
 
-    private Player player;
+    private final Player player;
     private final Main main;
     private File playerFile;
     private File playerData;
