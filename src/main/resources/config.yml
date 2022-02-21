@@ -1,0 +1,10 @@
+# Harvester Version 1.0 #
+# Made by: Joshscoper #
+
+Settings:
+  auto_plant:
+    enabled: true
+    permission: "harvester.autoplant"
+  harvest_hologram:
+    enabled: true
+    item: wooden_hoe
