@@ -2,9 +2,16 @@
 # Made by: Joshscoper #
 
 Settings:
+  harvest_icon:
+    enabled: true
+    icon:
+      item: wooden_hoe
+      custom_model_data: 1
   auto_plant:
     enabled: true
     permission: "harvester.autoplant"
   harvest_hologram:
     enabled: true
     item: wooden_hoe
+  inspect:
+    enabled: true
