@@ -30,33 +30,35 @@ public class CropHarvest implements Listener {
         Location bloc = block.getLocation();
         Ageable ageable = (Ageable) block.getBlockData();
         PlayerFileManager playerFileManager = new PlayerFileManager(main, player);
-        if (ageable.getAge() == ageable.getMaximumAge()){
-            if (main.getConfigManager().getDataConfig().getBoolean("Settings.auto_plant.enabled")){
-                if (player.hasPermission("Settings.auto_plant.permission")){
-                    if (playerFileManager.getPlayerConfig().getBoolean("auto_plant.enabled")){
-                        event.setCancelled(true);
-                        if (player.getInventory().firstEmpty() > -1){
-                            for (ItemStack item : block.getDrops()){
-                                if (item.getType().toString().contains("SEEDS")){
-                                    item.setType(Material.AIR);
+        if (block.getBlockData() instanceof Ageable) {
+            if (ageable.getAge() == ageable.getMaximumAge()) {
+                if (main.getConfigManager().getDataConfig().getBoolean("Settings.auto_plant.enabled")) {
+                    if (player.hasPermission("Settings.auto_plant.permission")) {
+                        if (playerFileManager.getPlayerConfig().getBoolean("auto_plant.enabled")) {
+                            event.setCancelled(true);
+                            if (player.getInventory().firstEmpty() > -1) {
+                                for (ItemStack item : block.getDrops()) {
+                                    if (item.getType().toString().contains("SEEDS")) {
+                                        item.setType(Material.AIR);
+                                    }
+                                    player.getInventory().addItem(item);
                                 }
-                                player.getInventory().addItem(item);
+
+                            } else {
+
+                                for (ItemStack item : block.getDrops()) {
+                                    if (item.getType().toString().contains("SEEDS")) {
+                                        item.setType(Material.AIR);
+                                    }
+                                    player.getWorld().dropItem(player.getLocation(), item);
+                                }
                             }
 
-                        } else {
+                            ageable.setAge(1);
+                            block.setBlockData(ageable);
+                            setBlock(bloc, block);
 
-                            for (ItemStack item : block.getDrops()){
-                                if (item.getType().toString().contains("SEEDS")){
-                                    item.setType(Material.AIR);
-                                }
-                                player.getWorld().dropItem(player.getLocation(), item);
-                            }
                         }
-
-                        ageable.setAge(1);
-                        block.setBlockData(ageable);
-                        setBlock(bloc,block);
-
                     }
                 }
             }

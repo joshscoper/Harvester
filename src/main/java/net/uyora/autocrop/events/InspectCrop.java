@@ -29,7 +29,7 @@ public class InspectCrop implements Listener {
         PlayerFileManager playerFileManager = new PlayerFileManager(main, player);
         if (main.getConfigManager().getDataConfig().getBoolean("Settings.inspect.enable")){
             if (playerFileManager.getPlayerConfig().getBoolean("inspect_plant.enabled")) {
-                if (action.equals(Action.RIGHT_CLICK_AIR) && player.isSneaking()) {
+                if (action.equals(Action.RIGHT_CLICK_BLOCK) && player.isSneaking()) {
                     Ageable ageable = (Ageable) block.getBlockData();
                     int age = ageable.getAge();
                     int maxAge = ageable.getMaximumAge();

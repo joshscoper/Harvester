@@ -13,8 +13,8 @@ import java.util.logging.Level;
 public class ConfigManager {
 
     private final Main main;
-    private FileConfiguration dataConfig = null;
-    private File configFile = null;
+    private FileConfiguration dataConfig;
+    private File configFile;
 
     public ConfigManager(Main main) {
         this.main = main;

@@ -10,8 +10,11 @@ Settings:
   auto_plant:
     enabled: true
     permission: "harvester.autoplant"
+  #Holograms require GHolo by Gecolay - https://www.spigotmc.org/resources/gholo-the-new-modern-holo-plugin-1-9-x-1-18-x.70913/
   harvest_hologram:
     enabled: true
-    item: wooden_hoe
+    icon:
+      item: wooden_hoe
+      custom_model_data: 1
   inspect:
     enabled: true

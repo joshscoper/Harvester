@@ -35,8 +35,10 @@ public class PlayerFileManager {
                 playerData.createNewFile();
                 playerConfig.createSection("auto_plant.enabled");
                 playerConfig.createSection("inspect_plant.enabled");
+                playerConfig.createSection("harvest_hologram");
                 playerConfig.set("auto_plant.enabled", true);
                 playerConfig.set("inspect_plant.enabled",true);
+                playerConfig.set("harvest_hologram", true);
                 playerConfig.save(playerData);
             } catch (IOException e) {
                 e.printStackTrace();
