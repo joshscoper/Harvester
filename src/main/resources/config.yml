@@ -16,5 +16,6 @@ Settings:
     icon:
       item: wooden_hoe
       custom_model_data: 1
+    duration: 5
   inspect:
     enabled: true

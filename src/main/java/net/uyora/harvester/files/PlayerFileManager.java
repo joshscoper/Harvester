@@ -1,6 +1,6 @@
-package net.uyora.autocrop.files;
+package net.uyora.harvester.files;
 
-import net.uyora.autocrop.Main;
+import net.uyora.harvester.Main;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 

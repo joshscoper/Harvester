@@ -1,7 +1,7 @@
-package net.uyora.autocrop.events;
+package net.uyora.harvester.events;
 
-import net.uyora.autocrop.Main;
-import net.uyora.autocrop.files.PlayerFileManager;
+import net.uyora.harvester.Main;
+import net.uyora.harvester.files.PlayerFileManager;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

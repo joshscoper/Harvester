@@ -1,6 +1,6 @@
-package net.uyora.autocrop.menu.inspect;
+package net.uyora.harvester.menu.inspect;
 
-import net.uyora.autocrop.menu.Menu;
+import net.uyora.harvester.menu.Menu;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 
 public class InspectMenu extends Menu {

@@ -1,6 +1,6 @@
-package net.uyora.autocrop.menu;
+package net.uyora.harvester.menu;
 
-import net.uyora.autocrop.Main;
+import net.uyora.harvester.Main;
 import org.bukkit.entity.Player;
 
 public class MenuSession {

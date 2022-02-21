@@ -1,8 +1,9 @@
-package net.uyora.autocrop.events;
+package net.uyora.harvester.events;
 
-import net.uyora.autocrop.Main;
-import net.uyora.autocrop.files.PlayerFileManager;
+import net.uyora.harvester.Main;
+import net.uyora.harvester.files.PlayerFileManager;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -28,9 +29,24 @@ public class CropHarvest implements Listener {
         Player player = event.getPlayer();
         Block block = event.getBlock();
         Location bloc = block.getLocation();
-        Ageable ageable = (Ageable) block.getBlockData();
         PlayerFileManager playerFileManager = new PlayerFileManager(main, player);
         if (block.getBlockData() instanceof Ageable) {
+            Ageable ageable = (Ageable) block.getBlockData();
+            if (player.isSneaking()){
+                if (main.getConfigManager().getDataConfig().getBoolean("Settings.inspect.enabled")) {
+                    if (playerFileManager.getPlayerConfig().getBoolean("inspect_plant.enabled")) {
+                        event.setCancelled(true);
+                        int age = ageable.getAge();
+                        int maxAge = ageable.getMaximumAge();
+                        String cropType = block.getType().toString();
+                        cropType = cropType.toLowerCase();
+                        cropType = cropType.replaceFirst(String.valueOf(cropType.charAt(0)), String.valueOf(Character.toUpperCase(cropType.charAt(0))));
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', "&2&lHarvester &f>>> &a" + cropType + " &7[&f" + age
+                                + "&7/&f" + maxAge + "&7]"));
+                    }
+                }
+                return;
+            }
             if (ageable.getAge() == ageable.getMaximumAge()) {
                 if (main.getConfigManager().getDataConfig().getBoolean("Settings.auto_plant.enabled")) {
                     if (player.hasPermission("Settings.auto_plant.permission")) {

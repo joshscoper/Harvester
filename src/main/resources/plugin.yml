@@ -1,0 +1,5 @@
+name: Harvester
+version: ${project.version}
+main: net.uyora.harvester.Main
+api-version: 1.18
+authors: [joshscoper]

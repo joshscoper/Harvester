@@ -1,6 +1,6 @@
-package net.uyora.autocrop.menu;
+package net.uyora.harvester.menu;
 
-import net.uyora.autocrop.Main;
+import net.uyora.harvester.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.event.inventory.InventoryClickEvent;
